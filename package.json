@@ -4,7 +4,6 @@
   "description": "This application is a social network api that leverages a NoSQL database. The intended purpose of this app is to demonstrate the ability to utilize unstructured data with an api driven framework.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
     "seed": "node utils/seed"
   },
