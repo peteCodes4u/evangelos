@@ -1,0 +1,32 @@
+{
+  "name": "evangelos",
+  "version": "1.0.0",
+  "description": "This application is a social network api that leverages a NoSQL database. The intended purpose of this app is to demonstrate the ability to utilize unstructured data with an api driven framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "seed": "node utils/seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peteCodes4u/evangelos.git"
+  },
+  "keywords": [
+    "node",
+    "mongo",
+    "mongoose",
+    "express.js",
+    "npm"
+  ],
+  "author": "peteCodes4u",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/peteCodes4u/evangelos/issues"
+  },
+  "homepage": "https://github.com/peteCodes4u/evangelos#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1"
+  }
+}
