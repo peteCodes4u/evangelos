@@ -1,6 +1,6 @@
 const Reaction = require('../models/Reaction');
 const Thought = require('../models/Thought');
-const User = require('../models/User');
+// const User = require('../models/User');
 
 module.exports = {
     // get all reactions

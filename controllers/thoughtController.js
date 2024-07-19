@@ -75,6 +75,38 @@ module.exports = {
             }
             res.status(200).json({message: 'This thought has been successfully deleted'});
             } catch(err) { res.status(422).json(err)}
-    }
+    },
+    // add a reaction to a thought
+    async addReaction(req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId },
+                { $addToSet: { reactions: req.body } },
+                { runValidators: true, new: true },
+            );
+            if(!thought){
+                return res.status(404).json({message: 'Sorry, something went wrong, please ensure your are supplying a valid thought id, refresh and try again'})
+            }
+
+            res.status(200).json(thought);
+
+        } catch (err) { res.status(422).json(err);}
+    },
+
+    // remove reaction from thought
+    async removeReaction(req, res) {
+        try {
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId },
+                { $pull: {reactions: { reactionId: req.params.reactionId } } },
+                { runValidators: true, new: true }
+            );
+            if(!thought) {
+                return res.status(404).json({message: 'sorry there does not seem to be any thoughts with that id that matches our records, please double check the id and try again'})
+            }
+            res.status(200).json(thought);
+        } catch(err) { res.status(422).json(err); }
+    },
+
     
-}
+};
