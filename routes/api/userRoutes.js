@@ -7,12 +7,12 @@ const {
 
 } = require('../../controllers/userController');
 
-// get all users route
+// api/users get all users route
 router.route('/')
     .get(getUsers)
     .post(createUser);
 
-// get user by id route
+// api/users get user by id route
 router.route('/:userId')
     .get(getOneUser);
 

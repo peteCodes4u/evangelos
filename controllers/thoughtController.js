@@ -32,7 +32,7 @@ module.exports = {
 
             if(!user) {
                 return res.status(404).json({
-                    message: 'This thought has been generated but there was an error associating it to a user, please ensure you are logged in and retry'
+                    message: 'This thought has been generated but there was an error associating it to a user, please double check your userId value and try again'
                 });
             }
 
@@ -61,7 +61,7 @@ module.exports = {
     // delete a thought
     async deleteThought(req, res) {
         try {
-            const thought = awiat.Thought.findOneAndRemove({ _id: req.params.thoughtid });
+            const thought = await Thought.findOneAndDelete({ _id: req.params.thoughtId });
             if(!thought) {
                 return res.status(404).json({message: 'something went wrong, there is no thought in our records with this id, please check the value and try again'})
             }
@@ -81,7 +81,7 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $addToSet: { reactions: req.body } },
+                { $push: { reactions: req.body } },
                 { runValidators: true, new: true },
             );
             if(!thought){
@@ -99,12 +99,12 @@ module.exports = {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $pull: {reactions: { reactionId: req.params.reactionId } } },
-                { runValidators: true, new: true }
+                { new: true }
             );
             if(!thought) {
                 return res.status(404).json({message: 'sorry there does not seem to be any thoughts with that id that matches our records, please double check the id and try again'})
             }
-            res.status(200).json(thought);
+            res.status(200).json({message: 'you have successfully deleted this reaction'});
         } catch(err) { res.status(422).json(err); }
     },
 
