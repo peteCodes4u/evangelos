@@ -12,7 +12,7 @@ module.exports = {
     // get one thought
     async getOneThought(req, res) {
         try {
-            const thought = await Thought.findOne({ _id: req.params.thoughtId})
+            const thought = await Thought.findOne({ _id: req.params.thoughtId});
             if(!thought) {
                 return res.status(404).json({message: 'Sorry something went wrong, that record could not be found please try agian'})
             }
@@ -26,8 +26,8 @@ module.exports = {
             const thought = await Thought.create(req.body);
             const user = await User.findOneAndUpdate(
                 { _id: req.body.userId },
-                { $addToSet: {thoughts: thought._id} },
-                { new: true }
+                { $addToSet: { thoughts: thought._id } },
+                { new: true },
             );
 
             if(!user) {
@@ -36,10 +36,10 @@ module.exports = {
                 });
             }
 
-            res.json({message:'😎 Congratulations on posting a new thought! horay for you!! 🍔'})
+            res.status(200).json({message:'😎 Congratulations on posting a new thought! horay for you!! 🍔'})
         } catch (err) { 
             console.log(err);
-            res.status(422).json(err) }
+            res.status(422).json(err); }
     },
     // update a thought
     async updateThought(req, res) {
@@ -47,16 +47,34 @@ module.exports = {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
                 { $set: req.body },
-                { runValidators: true, new: true }
+                { runValidators: true, new: true },
 
             );
             
-            res.json(thought);
+            res.status(200).json(thought);
 
         } catch (err) {
             console.log(err);
             res.status(422).json(err);
         }
     },
+    // delete a thought
+    async deleteThought(req, res) {
+        try {
+            const thought = awiat.Thought.findOneAndRemove({ _id: req.params.thoughtid });
+            if(!thought) {
+                return res.status(404).json({message: 'something went wrong, there is no thought in our records with this id, please check the value and try again'})
+            }
+            const user = await User.findOneAndUpdate(
+                { thoughts: req.params.thoughtId },
+                { $pull: { thoughts: req.params.thoughtId }},
+                { new: true },
+            );
+            if(!user) {
+                return res.status(404).json({message: 'something went wrong, there is no user with this id to remove this thought from, please double check the user id and try again'});
+            }
+            res.status(200).json({message: 'This thought has been successfully deleted'});
+            } catch(err) { res.status(422).json(err)}
+    }
     
 }
