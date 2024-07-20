@@ -15,13 +15,14 @@ module.exports = {
     async getOneUser(req, res) {
         try {
             const user = await User.findOne({ _id: req.params.userId })
-            .select('-__v');
+            .select('-__v')
 
             if (!user) {
                 return res.status(404).json({message: 'Sorry, that user is not found in our records, please try again.'});
             }
 
             res.json(user);
+
         } catch (err) {
             res.status(422).json(err);
         }
@@ -80,8 +81,10 @@ module.exports = {
             if(!user){
                 return res.status(404).json({message: 'sorry, there are no users associated with the Id supplied, please check the id and try again'})
             }
+
             res.status(200).json(user);
-        } catch(err){res.status(422).json(err)}
+
+        } catch(err){res.status(422).json({message: 'something went wrong', error: err})}
     },
 
     // delete a friend
