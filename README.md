@@ -10,12 +10,15 @@ This application is a social network api that leverages a NoSQL database. The in
 - [Contributions](#Contributions)
 - [Test Instructions](#Test-Instructions)
 - [Additional Questions](#additional-questions-send-an-email-or-follow-the-link-to-my-github-profile)
+- [Walkthrough Video](#Link-to-Walkthrough-Video) 
 
 ## Installation Instructions
-This application utilizes node package manager (npm). Inorder to run this application clone the repository and then enter "npm install" in the terminal. The database is required  for this app to function. In order to configure the database supply the following environment variables to a .en file: POSTGRESURI='YOURPOSTGRESURI' and SESSIONSECRET='STRING'. the repository's package.json file maintains the scripts necessary to install and run this application. After installing npm and configuring the .env file execute the seed script by executing the following command in the terminal: npm run seed. After the database has been seeded successfully start the application by entering the following command : npm start.
+This application utilizes node package manager (npm). In order to run this application clone the repository and then enter "npm install" in the terminal. The database is mongo and is required  for this app to function. In order to configure the database supply the following environment variables to a .env file: MONGOURI='YOURMONGOURI'. the repository's package.json file maintains the scripts necessary to install and run this application. After installing npm and configuring the .env file, start the application by entering the following command : 'npm start'.
 
 ## Usage Information
-the intended usage of this application is to create a noSQL data framework leveraging node, mongoose and express.js in order to provide users with the ability to create users, publish thoughts, react to other users's thoughts and to create friend lists to provide social networking opertunities as well as demonstrate a relateivley lean backend framework. 
+the intended usage of this application is to create a noSQL data framework leveraging node, mongoose ODM and express.js in order to provide users with the ability to create users, publish thoughts, react to other users's thoughts and to create friend lists to provide social networking opertunities as well as demonstrate a relateivley lean backend framework. 
+
+## Link to Walkthrough Video
 
 ## License
 ![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)
