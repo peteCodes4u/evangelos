@@ -1,8 +1,8 @@
 const { connect, connection } = require('mongoose');
+require("dotenv").config();
 
-// Update database value when ready
-const database = 'evangelos_db';
+const database = process.env.MONGOURI;
 
-connect(`mongodb://127.0.0.1:27017/${database}`);
+connect(database);
 
 module.exports = connection;
