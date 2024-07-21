@@ -18,6 +18,8 @@ This application utilizes node package manager (npm). In order to run this appli
 ## Usage Information
 the intended usage of this application is to create a noSQL data framework leveraging node, mongoose ODM and express.js in order to provide users with the ability to create users, publish thoughts, react to other users's thoughts and to create friend lists to provide social networking opertunities as well as demonstrate a relateivley lean backend framework. 
 
+![](./public/images/evangelos_walkthrough.gif)
+
 ## Link to Walkthrough Video
 https://drive.google.com/file/d/1AhQBh0_hGPcCJZ4e34EwSdMrcUyfbNrP/view?usp=drive_link
 
